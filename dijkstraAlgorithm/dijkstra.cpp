@@ -64,21 +64,18 @@ int dijkstra(int source, int dest){
 
 int main(){
     // graph_data g1(0, 12);
-    int v, e, src, dest;
-    while (scanf(("%d %d"), &v, &e) == 2){
-        while (e--){
-            int u, v, weight;
-            cin >> u >> v >> weight;
-            edge[u].push_back(v);
-            edge[v].push_back(u);
-            cost[u].push_back(weight);
-            cost[v].push_back(weight);
-        }
-        cin >> src >> dest;
-        int ans = dijkstra(src, dest);
-        cout << "the sssp of " << src << "and " << dest << " is " << ans << endl;
-    };
-    cout << "hello~" << endl;
+    int n, e, src, dest;
+    cin >> n >> e;
+    for (int i= 0; i < e; i++){
+        int u, v, weight;
+        cin >> u >> v >> weight;
+        edge[u].push_back(v);
+        edge[v].push_back(u);
+        cost[u].push_back(weight);
+        cost[v].push_back(weight);
+    }
+    cin >> src >> dest;
+    int ans = dijkstra(src, dest);
+    cout << "the sssp of " << src << "and " << dest << " is " << ans << endl;
     return 0;
-
 }
