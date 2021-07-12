@@ -65,7 +65,7 @@ int dijkstra(int source, int dest){
 int main(){
     // graph_data g1(0, 12);
     int v, e, src, dest;
-    while (scanf(("%d\t%d"), &v, &e) == 2){
+    while (scanf(("%d %d"), &v, &e) == 2){
         while (e--){
             int u, v, weight;
             cin >> u >> v >> weight;
