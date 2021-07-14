@@ -1,6 +1,13 @@
 #!/bin/bash
 
 git add .
-date | git commit -m
 
-git push
+msg="rebuilding this pac $(date)"
+
+if [ -n "$*" ]; then
+    msg = "$*"
+fi
+
+git commit -m "$msg"
+
+git push -u origin main
