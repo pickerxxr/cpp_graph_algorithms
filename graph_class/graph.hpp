@@ -28,7 +28,13 @@ public:
     vid_t *begin() { return adj; }
     vid_t *end() { return adj + len_out + len_in;}
 
-     
+    size_t size() const { return len_out + len_in; }
+    size_t size_out() const { return len_out; }
+    size_t size_in() const { return len_int; }
+
+    void push_back_out(vid_t data){
+        adj[len_out++] = data;
+    }
 };
 
 
