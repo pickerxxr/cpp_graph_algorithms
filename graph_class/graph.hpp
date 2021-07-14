@@ -8,7 +8,6 @@
 #include <unordered_map>
 #include "util.hpp"
 #include "dense_bitset.hpp"
-#include "dense_bitset.hpp"
 
 /*
 This mem_adjlist_t class is the entry in the index array
@@ -23,7 +22,13 @@ public:
     vid_t len_in;
 
 public:
-    
+    mem_adjlist_t() : adj(NULL), len_out(0), len_in(0) {}
+    mem_adjlist_t( vid_t *adj ) : adj(adj), len_out(0), len_in(0) {}
+
+    vid_t *begin() { return adj; }
+    vid_t *end() { return adj + len_out + len_in;}
+
+     
 };
 
 
