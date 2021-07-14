@@ -34,8 +34,28 @@ public:
 
     void push_back_out(vid_t data){
         adj[len_out++] = data;
+    };
+
+    coid push_back_in(vid_t data, vid_t offset){
+        adj[len_in++ + offset] = data;
+    };
+
+    void erase_out(vid_t to_erase_pos){
+        adj[to_erase_pos] = adj[size_out() - 1];
+        adj[size_out() - 1] = adj[size() - 1];
+        pop_back_out();
     }
+
+
+    void erase_in(vid_t to_erase_pos){
+        adj[to_erase_pos] = adj[size()-1];
+        pop_back_in();
+    }
+
+    void pop_back_out(){len_out--;}
+    void pop_back_in(){len_in--;}
 };
+
 
 
 
