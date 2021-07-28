@@ -4,16 +4,17 @@
 #include <unordered_set>
 #include <list>
 
+class Edge;
 
 class Vertex {
 public:
     int value;
     int in;
     int out;
-    std::list<Vertex*> neighbors;
+    std::list<Vertex*> next;
     std::list<Edge*> edges;
 
-    Vertex(int v, int i = 0, int o = 0) : value(v) {}
+    Vertex(int v, int i = 0, int o = 0) :value(v) {}
 };
 
 class Edge {
@@ -42,7 +43,23 @@ Graph* createGraphStructure(int arr[][3], int n){
         int from = arr[i][1];
         int to = arr[i][0];
         if (!graphStruct->vertices.count(from)){
-            Graph
+            graphStruct->vertices[from] = new Vertex(from);
         }
+        if (!graphStruct->vertices.count(to)){
+            graphStruct->vertices[to] = new Vertex(to);
+        }
+
+        Vertex* fromVertex = graphStruct->vertices[from];
+        Vertex* toVertex = graphStruct->vertices[to];
+
+        Edge* newEdge = new Edge(weight, fromVertex, toVertex);
+        fromVertex->out++;
+        fromVertex->edges.push_back(newEdge);
+        fromVertex->next.push_back(toVertex);
+        toVertex->in++;
+        graphStruct->edges.insert(newEdge);
+        
     }
+    return graphStruct;
+
 }
